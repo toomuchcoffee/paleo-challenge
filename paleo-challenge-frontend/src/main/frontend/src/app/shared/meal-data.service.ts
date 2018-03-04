@@ -4,13 +4,14 @@ import {Observable} from "rxjs/Observable";
 import "rxjs/add/observable/of";
 import "rxjs/add/operator/map";
 import {Meal, Ingredient} from "../shared/dtos";
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class MealDataService {
 
   constructor(private http: HttpClient) { }
 
-  apiUrl = 'http://localhost:8080/api/meals';
+  apiUrl = environment.apiBaseUrl + '/api/meals';
 
   public getMeals(): Observable<Meal[]> {
     return this.http.get<Meal[]>(this.apiUrl);
