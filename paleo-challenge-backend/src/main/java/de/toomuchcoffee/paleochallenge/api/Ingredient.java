@@ -1,12 +1,10 @@
 package de.toomuchcoffee.paleochallenge.api;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@JsonInclude
-@Data
-@Builder
+@Getter
+@Setter
 public class Ingredient {
     private String name;
 }

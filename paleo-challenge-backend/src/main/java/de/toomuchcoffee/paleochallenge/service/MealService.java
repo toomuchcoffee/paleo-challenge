@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -17,28 +18,40 @@ public class MealService {
     @PostConstruct
     public void setUp() {
         meals = Lists.newArrayList(
-                Meal.builder()
-                        .name("Frozen Berry Smoothie")
-                        .ingredients(Lists.newArrayList(
-                                Ingredient.builder().name("Banana").build(),
-                                Ingredient.builder().name("Nuts").build(),
-                                Ingredient.builder().name("Joghurt").build(),
-                                Ingredient.builder().name("Frozen Berries").build()
-                        ))
-                        .build(),
-                Meal.builder()
-                        .name("Salmon & Broccoli")
-                        .ingredients(Lists.newArrayList(
-                                Ingredient.builder().name("Salmon").build(),
-                                Ingredient.builder().name("Broccoli").build(),
-                                Ingredient.builder().name("Mustard").build(),
-                                Ingredient.builder().name("Olive Oil").build()
-                        ))
-                        .build()
-        );
+                newMeal("Frozen Berry Smoothie",
+                        newIngredient("Banana"),
+                        newIngredient("Nuts"),
+                        newIngredient("Joghurt"),
+                        newIngredient("Frozen Berries")
+                ),
+                newMeal("Salmon & Broccoli",
+                        newIngredient("Salmon"),
+                        newIngredient("Broccoli"),
+                        newIngredient("Mustard"),
+                        newIngredient("Olive Oil")
+                ));
+    }
+
+    private Meal newMeal(String name, Ingredient... ingredients) {
+        Meal meal = new Meal();
+        meal.setName(name);
+        meal.setIngredients(Lists.newArrayList());
+        Arrays.stream(ingredients)
+                .forEach(i -> meal.getIngredients().add(i));
+        return meal;
+    }
+
+    private Ingredient newIngredient(String name) {
+        Ingredient ingredient = new Ingredient();
+        ingredient.setName(name);
+        return ingredient;
     }
 
     public List<Meal> getMeals() {
         return meals;
+    }
+
+    public void addMeal(Meal meal) {
+        meals.add(meal);
     }
 }

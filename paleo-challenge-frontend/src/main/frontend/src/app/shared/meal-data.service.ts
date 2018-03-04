@@ -12,8 +12,11 @@ export class MealDataService {
 
   apiUrl = 'http://localhost:8080/api/meals';
 
-  getMeals(): Observable<Meal[]> {
+  public getMeals(): Observable<Meal[]> {
     return this.http.get<Meal[]>(this.apiUrl);
   }
 
+  public addMeal(meal: Meal): Observable<Meal> {
+    return this.http.post<Meal>(this.apiUrl, meal);
+  }
 }

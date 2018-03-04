@@ -1,0 +1,12 @@
+<div class="container">
+  <h3>Add a meal</h3>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    Name: <input type="text" formControlName="name">
+
+    <button type="submit" [disabled]="!form.valid" class="btn btn-primary">
+      Add meal!
+    </button>
+
+  </form>
+</div>

@@ -2,10 +2,8 @@ package de.toomuchcoffee.paleochallenge.api;
 
 import de.toomuchcoffee.paleochallenge.service.MealService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,8 +14,13 @@ import java.util.List;
 public class MealController {
     private final MealService mealService;
 
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<Meal> getMeals() {
         return mealService.getMeals();
+    }
+
+    @PostMapping
+    public void postMeal(@RequestBody Meal meal) {
+        mealService.addMeal(meal);
     }
 }
