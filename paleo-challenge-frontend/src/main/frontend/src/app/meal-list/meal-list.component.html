@@ -1,15 +1,12 @@
-<p>
-  meal-list works!
-</p>
-
 <div class="container">
 
-  <fieldset *ngFor="let meal of meals">
-    <legend>{{meal.name}}</legend>
+  <h3>Your meals</h3>
+  <div *ngFor="let meal of meals" class="container">
+    <h4>{{meal.name}}</h4>
     <ul class="list-group">
       <div *ngFor="let ingredient of meal.ingredients">
         <li class="list-group-item">{{ingredient.name}}</li>
       </div>
     </ul>
-  </fieldset>
+  </div>
 </div>

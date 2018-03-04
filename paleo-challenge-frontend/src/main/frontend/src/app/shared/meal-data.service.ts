@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/observable/of";
 import "rxjs/add/operator/map";
-import {Meal} from "../shared/meal";
-import {Ingredient} from "../shared/ingredient";
+import {Meal, Ingredient} from "../shared/dtos";
 
 @Injectable()
 export class MealDataService {

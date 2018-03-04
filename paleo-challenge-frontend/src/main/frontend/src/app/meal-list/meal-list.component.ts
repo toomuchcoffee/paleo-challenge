@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MealDataService } from "../shared/meal-data.service";
-import {Meal} from "../shared/meal";
-import {Ingredient} from "../shared/ingredient";
+import {Meal, Ingredient} from "../shared/dtos";
 
 @Component({
   selector: 'app-meal-list',
