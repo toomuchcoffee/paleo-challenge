@@ -1,1 +1,1 @@
-web: java -jar paleo-challenge-backend/target/paleo-challenge-backend-1.0-SNAPSHOT.jar
+web: java $JAVA_OPTS -Dserver.port=$PORT -Dspring.profiles.active=heroku -jar paleo-challenge-backend/target/*.jar
