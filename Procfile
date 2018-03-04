@@ -1,0 +1,1 @@
+web: java -jar paleo-challenge-backend/target/paleo-challenge-1.0.SNAPSHOT.jar
