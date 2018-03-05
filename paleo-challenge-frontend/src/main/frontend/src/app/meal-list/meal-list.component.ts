@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MealDataService } from "../shared/meal-data.service";
-import {Meal, Ingredient} from "../shared/dtos";
+import {Component, OnInit} from '@angular/core';
+import {MealDataService} from "../shared/meal-data.service";
+import {Meal} from "../shared/dtos";
 
 @Component({
   selector: 'app-meal-list',
@@ -11,7 +11,8 @@ export class MealListComponent implements OnInit {
 
   meals: Meal[];
 
-  constructor(private mealDataService: MealDataService) { }
+  constructor(private mealDataService: MealDataService) {
+  }
 
   ngOnInit() {
     this.mealDataService.getMeals().subscribe(meals => this.meals = meals);

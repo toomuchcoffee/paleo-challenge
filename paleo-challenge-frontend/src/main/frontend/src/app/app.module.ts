@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {routing} from "./app.routing";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
-import { MealListComponent } from './meal-list/meal-list.component';
-import { MealCreateComponent } from './meal-create/meal-create.component';
-import { MealDataService } from './shared/meal-data.service';
+import {MealListComponent} from './meal-list/meal-list.component';
+import {MealCreateComponent} from './meal-create/meal-create.component';
+import {MealDataService} from './shared/meal-data.service';
 
 
 @NgModule({
@@ -29,4 +29,5 @@ import { MealDataService } from './shared/meal-data.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
