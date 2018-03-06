@@ -33,13 +33,17 @@ export class MealCreateComponent implements OnInit {
   }
 
   addIngredient() {
-    const control = <FormArray>this.form.controls['ingredients'];
+    const control = this.getFormData();
     control.push(this.createIngredient())
   }
 
   removeIngredient(i: number) {
-    const control = <FormArray>this.form.controls['ingredients'];
+    const control = this.getFormData();
     control.removeAt(i)
+  }
+
+  getFormData(): FormArray {
+    return <FormArray>this.form.controls['ingredients'];
   }
 
   onSubmit(value) {
