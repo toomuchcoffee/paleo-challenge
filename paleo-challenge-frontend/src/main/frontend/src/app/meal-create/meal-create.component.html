@@ -8,7 +8,7 @@
       <a (click)="addIngredient()" class="btn btn-secondary"> Add ingredient </a>
 
       <div formArrayName="ingredients"
-           *ngFor="let ingredient of form.controls.ingredients.controls; let i = index">
+           *ngFor="let ingredient of form.get('ingredients').controls; let i = index">
         <div [formGroupName]="i">
           <label> Ingredient {{i+1}}: </label>
           <input formControlName="name"/>
