@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {MealDataService} from "../shared/meal-data.service";
 
@@ -18,10 +18,28 @@ export class MealCreateComponent implements OnInit {
   ngOnInit() {
     this.form = this.formBuilder.group({
       name: [
-        '',
-        Validators.required
+        '', Validators.required
+      ],
+      ingredients: this.formBuilder.array([])
+    });
+  }
+
+  createIngredient(): FormGroup {
+    return this.formBuilder.group({
+      name: [
+        '', Validators.required
       ]
     });
+  }
+
+  addIngredient() {
+    const control = <FormArray>this.form.controls['ingredients'];
+    control.push(this.createIngredient())
+  }
+
+  removeIngredient(i: number) {
+    const control = <FormArray>this.form.controls['ingredients'];
+    control.removeAt(i)
   }
 
   onSubmit(value) {
