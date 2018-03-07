@@ -1,9 +1,9 @@
 <div class="container">
 
   <h3>Your meals</h3>
-  <a [routerLink] = "['new']" class="btn btn-primary">
-    Add new meal
-  </a>
+  <button type="button" [routerLink] = "['new']" class="btn btn-primary">
+    New meal <i class="fa fa-play-circle"></i>
+  </button>
   <div *ngFor="let meal of meals" class="container">
     <h4>{{meal.name}}</h4>
     <ul class="list-group">
