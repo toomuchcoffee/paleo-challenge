@@ -3,14 +3,12 @@
 
   <form [formGroup]="form" novalidate (ngSubmit)="onSubmit(form.value)">
     <div>
-      <label>Name: </label>
-      <input formControlName="name">
+      <input formControlName="name" placeholder="Give your meal a name"/>
 
       <div formArrayName="ingredients"
            *ngFor="let ingredient of getIngredients().controls; let i = index">
         <div [formGroupName]="i">
-          <label> Ingredient {{i+1}}: </label>
-          <input formControlName="name"/>
+          <input formControlName="name" placeholder="Add ingredient #{{i+1}}"/>
           <button type="button" (click)="removeIngredient(i)" class="btn btn-danger">
             <i class="fa fa-minus-circle"></i>
           </button>
