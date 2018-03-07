@@ -33,23 +33,21 @@ export class MealCreateComponent implements OnInit {
   }
 
   addIngredient() {
-    const control = this.getFormData();
-    control.push(this.createIngredient())
+    this.getIngredients().push(this.createIngredient())
   }
 
   removeIngredient(i: number) {
-    const control = this.getFormData();
-    control.removeAt(i)
+    this.getIngredients().removeAt(i)
   }
 
-  getFormData(): FormArray {
+  getIngredients(): FormArray {
     return <FormArray>this.form.controls['ingredients'];
   }
 
   onSubmit(value) {
     console.log(value);
     this.mealDataService.addMeal(value).subscribe(
-      v => this.router.navigate(['/meals'])
+      v => this.router.navigate(['..'])
     );
   }
 

@@ -9,13 +9,13 @@ const routes: Routes = [
     component: MealListComponent
   },
   {
+    path: 'meals/new',
+    component: MealCreateComponent
+  },
+  {
     path: '',
     redirectTo: '/meals',
     pathMatch: 'full'
-  },
-  {
-    path: 'new',
-    component: MealCreateComponent
   }
 ];
 

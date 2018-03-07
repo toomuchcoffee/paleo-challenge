@@ -5,17 +5,17 @@
     <div>
       <label>Name: </label>
       <input formControlName="name">
-      <a (click)="addIngredient()" class="btn btn-secondary"> Add ingredient </a>
 
       <div formArrayName="ingredients"
-           *ngFor="let ingredient of getFormData().controls; let i = index">
+           *ngFor="let ingredient of getIngredients().controls; let i = index">
         <div [formGroupName]="i">
           <label> Ingredient {{i+1}}: </label>
           <input formControlName="name"/>
-          <a *ngIf="getFormData().controls.length > 0" (click)="removeIngredient(i)" class="btn btn-danger">remove</a>
+          <a (click)="removeIngredient(i)" class="btn btn-danger">remove</a>
         </div>
       </div>
 
+      <button type="button" (click)="addIngredient()" [disabled]="!form.valid" class="btn btn-secondary"> Add ingredient </button>
       <button type="submit" [disabled]="!form.valid" class="btn btn-primary">
         Add meal!
       </button>
