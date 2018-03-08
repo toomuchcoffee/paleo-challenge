@@ -9,13 +9,15 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MealListComponent} from './meal-list/meal-list.component';
 import {MealCreateComponent} from './meal-create/meal-create.component';
 import {MealDataService} from './shared/meal-data.service';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MealListComponent,
-    MealCreateComponent
+    MealCreateComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
