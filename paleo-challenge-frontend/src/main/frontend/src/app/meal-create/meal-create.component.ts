@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 import {MealDataService} from "../shared/meal-data.service";
 
 
@@ -12,7 +12,11 @@ import {MealDataService} from "../shared/meal-data.service";
 export class MealCreateComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private mealDataService: MealDataService, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private mealDataService: MealDataService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -47,7 +51,7 @@ export class MealCreateComponent implements OnInit {
   onSubmit(value) {
     console.log(value);
     this.mealDataService.addMeal(value).subscribe(
-      v => this.router.navigate(['..'])
+      v => this.router.navigate(['../'], { relativeTo: this.activatedRoute })
     );
   }
 
