@@ -1,57 +1,35 @@
 package de.toomuchcoffee.paleochallenge.service;
 
-import com.google.common.collect.Lists;
-import de.toomuchcoffee.paleochallenge.api.Ingredient;
-import de.toomuchcoffee.paleochallenge.api.Meal;
+import de.toomuchcoffee.paleochallenge.domain.entity.Ingredient;
+import de.toomuchcoffee.paleochallenge.domain.entity.Meal;
+import de.toomuchcoffee.paleochallenge.domain.repository.IngredientRepository;
+import de.toomuchcoffee.paleochallenge.domain.repository.MealRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import static com.google.common.collect.Lists.newArrayList;
+import static java.util.stream.Collectors.toList;
+
+@RequiredArgsConstructor
 @Service
 public class MealService {
 
-    private ArrayList<Meal> meals;
-
-    @PostConstruct
-    public void setUp() {
-        meals = Lists.newArrayList(
-                newMeal("Frozen Berry Smoothie",
-                        newIngredient("Banana"),
-                        newIngredient("Nuts"),
-                        newIngredient("Joghurt"),
-                        newIngredient("Frozen Berries")
-                ),
-                newMeal("Salmon & Broccoli",
-                        newIngredient("Salmon"),
-                        newIngredient("Broccoli"),
-                        newIngredient("Mustard"),
-                        newIngredient("Olive Oil")
-                ));
-    }
-
-    private Meal newMeal(String name, Ingredient... ingredients) {
-        Meal meal = new Meal();
-        meal.setName(name);
-        meal.setIngredients(Lists.newArrayList());
-        Arrays.stream(ingredients)
-                .forEach(i -> meal.getIngredients().add(i));
-        return meal;
-    }
-
-    private Ingredient newIngredient(String name) {
-        Ingredient ingredient = new Ingredient();
-        ingredient.setName(name);
-        return ingredient;
-    }
+    private final MealRepository mealRepository;
+    private final IngredientRepository ingredientRepository;
 
     public List<Meal> getMeals() {
-        return meals;
+        return newArrayList(mealRepository.findAll());
     }
 
+    @Transactional
     public void addMeal(Meal meal) {
-        meals.add(meal);
+        List<Ingredient> ingredients = meal.getIngredients().stream()
+                .map(i -> ingredientRepository.findByNameIgnoreCase(i.getName()).orElse(i))
+                .collect(toList());
+        meal.setIngredients(ingredients);
+        mealRepository.save(meal);
     }
 }
