@@ -13,7 +13,7 @@ public class IngredientService {
     private final IngredientRepository ingredientRepository;
 
     public List<Ingredient> findIngredientsMatching(String query) {
-        return ingredientRepository.findByNameContainingIgnoreCase(query);
+        return ingredientRepository.findByNameStartsWithIgnoreCase(query);
     }
 
 }

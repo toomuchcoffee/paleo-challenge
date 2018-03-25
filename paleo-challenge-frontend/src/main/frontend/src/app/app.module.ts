@@ -8,7 +8,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import {MealListComponent} from './meal-list/meal-list.component';
 import {MealCreateComponent} from './meal-create/meal-create.component';
+import { IngredientInputWithSuggestComponent } from './ingredient-input-with-suggest/ingredient-input-with-suggest.component';
 import {MealDataService} from './shared/meal-data.service';
+import {IngredientDataService} from './shared/ingredient-data.service';
 import { HomeComponent } from './home/home.component';
 
 
@@ -17,7 +19,8 @@ import { HomeComponent } from './home/home.component';
     AppComponent,
     MealListComponent,
     MealCreateComponent,
-    HomeComponent
+    HomeComponent,
+    IngredientInputWithSuggestComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,
   ],
   providers: [
-    MealDataService
+    MealDataService,
+    IngredientDataService
   ],
   bootstrap: [AppComponent]
 })

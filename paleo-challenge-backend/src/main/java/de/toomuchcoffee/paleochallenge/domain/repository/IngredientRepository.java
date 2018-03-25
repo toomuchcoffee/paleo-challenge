@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface IngredientRepository extends CrudRepository<Ingredient, Long> {
     Optional<Ingredient> findByNameIgnoreCase(String name);
-    List<Ingredient> findByNameContainingIgnoreCase(String name);
+    List<Ingredient> findByNameStartsWithIgnoreCase(String name);
 }

@@ -1,0 +1,16 @@
+<div [formGroup]="ingredientForm" class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">{{index+1}}</span>
+  </div>
+  <div class="form-control search-container">
+    <input formControlName="name" class="search" placeholder="Add ingredient"
+           (input)="searchSuggestion()"
+           (dblclick)="acceptSuggestion()"/>
+    <input disabled="disabled" class="suggest" #suggest value="aaa"/>
+  </div>
+  <div class="input-group-append">
+    <button type="button" (click)="removeIngredient()" class="form-control btn btn-danger">
+      <i class="fa fa-remove"></i>
+    </button>
+  </div>
+</div>

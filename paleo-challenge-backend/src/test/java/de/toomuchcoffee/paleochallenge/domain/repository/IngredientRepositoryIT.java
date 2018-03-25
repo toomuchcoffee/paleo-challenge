@@ -28,10 +28,10 @@ public class IngredientRepositoryIT {
     }
 
     @Test
-    public void findByNameContainingIgnoreCase() throws Exception {
+    public void findByNameStartsWithIgnoreCase() throws Exception {
         Iterable<Ingredient> all = ingredientRepository.findAll();
         assertThat(all).hasSize(3);
-        List<Ingredient> found = ingredientRepository.findByNameContainingIgnoreCase("aB");
+        List<Ingredient> found = ingredientRepository.findByNameStartsWithIgnoreCase("aB");
         assertThat(found).hasSize(2);
     }
 

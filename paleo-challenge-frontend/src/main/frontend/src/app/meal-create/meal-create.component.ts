@@ -40,10 +40,6 @@ export class MealCreateComponent implements OnInit {
     this.getIngredients().push(this.createIngredient())
   }
 
-  removeIngredient(i: number) {
-    this.getIngredients().removeAt(i)
-  }
-
   getIngredients(): FormArray {
     return <FormArray>this.form.controls['ingredients'];
   }

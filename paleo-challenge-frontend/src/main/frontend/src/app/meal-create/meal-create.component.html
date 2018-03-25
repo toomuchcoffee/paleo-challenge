@@ -6,22 +6,13 @@
       <div class="input-group-prepend">
         <span class="input-group-text" id="new-meal"><i class="fa fa-cutlery"></i></span>
       </div>
-      <input formControlName="name" class="form-control form-rounded" placeholder="Give your meal a name"/>
+      <input formControlName="name" class="form-control" placeholder="Give your meal a name"/>
     </div>
 
     <div formArrayName="ingredients" *ngFor="let ingredient of getIngredients().controls; let i = index">
       <div [formGroupName]="i">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text">{{i+1}}</span>
-          </div>
-          <input formControlName="name" class="form-control form-rounded" placeholder="Add ingredient"/>
-          <div class="input-group-append">
-            <button type="button" (click)="removeIngredient(i)" class="form-control btn btn-danger">
-              <i class="fa fa-remove"></i>
-            </button>
-          </div>
-        </div>
+        <app-ingredient-input-with-suggest [formArray]="getIngredients()" [index]="i">
+        </app-ingredient-input-with-suggest>
       </div>
     </div>
 
