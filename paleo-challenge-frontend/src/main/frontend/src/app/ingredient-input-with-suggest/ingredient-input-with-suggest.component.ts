@@ -27,18 +27,25 @@ export class IngredientInputWithSuggestComponent {
   }
 
   acceptSuggestion() {
-    console.log("suggestion accepted: " + this.suggestion.nativeElement.value);
-    this.ingredientForm.controls['name'].setValue(this.suggestion.nativeElement.value);
+    let suggestedValue = this.suggestion.nativeElement.textContent;
+    console.log("suggestion accepted: " + suggestedValue);
+    this.ingredientForm.controls['name'].setValue(suggestedValue);
+    this.suggestion.nativeElement.textContent = '';
   }
 
   searchSuggestion() {
     let query = this.ingredientForm.controls['name'].value;
-    console.log("searching for ..." + query)
+    console.log("searching for ..." + query);
+    if (query.length < 1) {
+      this.suggestion.nativeElement.textContent = '';
+      return;
+    }
+
     this.searchService.findMatches(query).subscribe(matches => {
       if (matches.length) {
-        this.suggestion.nativeElement.value = matches[0].name;
+        this.suggestion.nativeElement.textContent = matches[0].name;
       } else {
-        this.suggestion.nativeElement.value = '';
+        this.suggestion.nativeElement.textContent = '';
       }
     });
   }

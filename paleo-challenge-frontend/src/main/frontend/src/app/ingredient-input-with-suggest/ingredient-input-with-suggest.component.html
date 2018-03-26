@@ -6,7 +6,7 @@
     <input formControlName="name" class="search" placeholder="Add ingredient"
            (input)="searchSuggestion()"
            (dblclick)="acceptSuggestion()"/>
-    <input disabled="disabled" class="suggest" #suggest value="aaa"/>
+    <label class="suggest" #suggest></label>
   </div>
   <div class="input-group-append">
     <button type="button" (click)="removeIngredient()" class="form-control btn btn-danger">
